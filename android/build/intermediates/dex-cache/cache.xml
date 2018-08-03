@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/bognar_junior/.android/build-cache/7e0dc47f61cfabcda6867fe60497d60a37777a2d/output/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/bognar_junior/Documents/GitHub/FormularioNative/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_9b22bd3cb3bcda9cb8b6817a6c66885a8e0e0bc5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bognar_junior/.android/build-cache/7e0dc47f61cfabcda6867fe60497d60a37777a2d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="e7a850c25a7efbd533c496ab482c980fdafac58d">
+        <dex dex="/Users/bognar_junior/Documents/GitHub/FormularioNative/android/app/build/intermediates/pre-dexed/debug/classes_543c795c23e4de77caed85705d7d77d7294c765f.jar" />
+    </item>
+
+</items>

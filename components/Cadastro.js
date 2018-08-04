@@ -6,15 +6,53 @@ export default class Cadastro extends Component {
     email: '',
     password: '',
     msg: null,
+    erros: [],
   };
 
+  renderErros = () => {
+    if (this.state.erros.length > 0) {
+      const listErr = this.state.erros.map( 
+        e => <Text style={{ color: '#cc2900', fontSize: 20 }} key={e}>{e}</Text>
+      );
+
+      return (
+        <View style={{ alignItems: 'center', paddingBottom: 20 }}>
+          <Text style={{ color: '#cc2900', fontSize:30, fontWeight: 'bold' }}>Atenção!</Text>
+          { listErr }
+        </View>
+      )
+    }
+  }
   renderMsg = () => {
     if (this.state.msg) {
-      return <Text style={styles.textMsg}>{this.state.msg}</Text>
+      return (
+        <View style={{ padding: 20}}>
+          <Text style={styles.textMsg}>{this.state.msg}</Text>
+        </View>
+      )
     }
   }
 
+  validarFormulario() {
+    let erros = [];
+    if (!this.state.email) {
+      erros.push('O campo email é requerido');
+    }
+    if (!this.state.password) {
+      erros.push('O campo senha é requerido');
+    }
+    return erros;
+  }
   onCadastrarPress =() => {
+    const erros = this.validarFormulario();
+    
+    if (erros.length > 0) {
+      this.setState({
+        erros
+      });
+      return;
+    }
+
     this.setState({ 
       msg: 'Muito obrigado por se cadastrar, verifique seu email os próximos passos',
       email: '',
@@ -52,12 +90,14 @@ export default class Cadastro extends Component {
               secureTextEntry={true}
             />
           </View>
-          
-          <Button 
-            title='Cadastrar' 
-            onPress={this.onCadastrarPress}
-          />
+          <View style={{ padding: 8}}>
+            <Button 
+              title='Cadastrar' 
+              onPress={this.onCadastrarPress}
+            />
+          </View>
         </View>
+        {this.renderErros()}
         {this.renderMsg()}
       </View>
     )
@@ -102,6 +142,6 @@ const styles = StyleSheet.create({
   textMsg: {
     alignSelf: 'center',
     color: '#33ff33',
-    fontSize: 18,
+    fontSize: 20,
   }
 });

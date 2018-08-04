@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import validator from 'validator';
 
 export default class Cadastro extends Component {
   state = {
@@ -23,6 +24,7 @@ export default class Cadastro extends Component {
       )
     }
   }
+
   renderMsg = () => {
     if (this.state.msg) {
       return (
@@ -38,14 +40,32 @@ export default class Cadastro extends Component {
     if (!this.state.email) {
       erros.push('O campo email é requerido');
     }
+
+    if (!validator.isEmail(this.state.email)) {
+      erros.push('Email com formato inválido');
+    }
+
     if (!this.state.password) {
       erros.push('O campo senha é requerido');
     }
+
+    if (this.state.password.length < 6) {
+      erros.push('O campo senha deve ter no mínimo 6 caracteres');
+    }
+
     return erros;
   }
-  onCadastrarPress =() => {
+
+  onCadastrarPress = () => {
+    this.setState({
+      msg: '',
+      erros: []
+    }, this.setMessage)
+  }
+
+  setMessage = () => {
     const erros = this.validarFormulario();
-    
+
     if (erros.length > 0) {
       this.setState({
         erros
@@ -88,6 +108,7 @@ export default class Cadastro extends Component {
               autoCapitalize='none'
               autoCorrect={false}
               secureTextEntry={true}
+              maxLength={15}
             />
           </View>
           <View style={{ padding: 8}}>

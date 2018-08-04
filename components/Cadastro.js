@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 
 export default class Cadastro extends Component {
   render() {
@@ -7,6 +7,10 @@ export default class Cadastro extends Component {
       <View style={styles.container}>
         <View style={styles.title}>
           <Text style={styles.titleLabel}> Nova Conta </Text>
+        </View>
+        <View style={styles.viewEmail}>
+          <Text style={styles.labelEmail}> Email: </Text>
+          <TextInput style={styles.inputEmail} underlineColorAndroid='transparent'> </TextInput>
         </View>
       </View>
     )
@@ -27,5 +31,25 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  viewEmail: {
+    flexDirection: 'row',
+    borderWidth: 1,
+    padding: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }, 
+  labelEmail: {
+    flex: 1,
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  inputEmail: {
+    flex: 3,
+    borderWidth: 0.5,
+    borderColor: '#CCCCCC',
+    borderRadius: 5,
+    height: 40,
+    padding: 8,
   }
 });

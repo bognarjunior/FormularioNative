@@ -4,7 +4,8 @@ import { View, Text, StyleSheet, TextInput } from 'react-native';
 export default class Cadastro extends Component {
   state = {
     email: '',
-  }
+    password: '',
+  };
 
   render() {
     return (
@@ -12,16 +13,29 @@ export default class Cadastro extends Component {
         <View style={styles.title}>
           <Text style={styles.titleLabel}> Nova Conta </Text>
         </View>
-        <View style={styles.viewEmail}>
-          <Text style={styles.labelEmail}> Email: </Text>
+        <View style={styles.inputContainer}>
+          <Text style={styles.labelInput}> Email: </Text>
           <TextInput 
-            style={styles.inputEmail} 
+            style={styles.inputText} 
             underlineColorAndroid='transparent'
             value={this.state.email}
             onChangeText={t => this.setState({ email: t })}
+            autoCapitalize='none'
+            autoCorrect={false}
           />
         </View>
-        <Text>{this.state.email}</Text>
+        <View style={styles.inputContainer}>
+          <Text style={styles.labelInput}> Senha: </Text>
+          <TextInput 
+            style={styles.inputText} 
+            underlineColorAndroid='transparent'
+            value={this.state.password}
+            onChangeText={t => this.setState({ password: t })}
+            autoCapitalize='none'
+            autoCorrect={false}
+            secureTextEntry={true}
+          />
+        </View>
       </View>
     )
   }
@@ -42,18 +56,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  viewEmail: {
+  inputContainer: {
     flexDirection: 'row',
     padding: 8,
     justifyContent: 'center',
     alignItems: 'center',
   }, 
-  labelEmail: {
+  labelInput: {
     flex: 1,
     fontWeight: 'bold',
     fontSize: 16,
   },
-  inputEmail: {
+  inputText: {
     flex: 3,
     borderWidth: 0.5,
     borderColor: '#CCCCCC',
